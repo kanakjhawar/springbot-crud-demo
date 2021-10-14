@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- this namespace is created to allow html to use thymeleaf expressions -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Thymeleaf Home</title>
+		<!-- referencing the css file -->
+		<link rel="stylesheet"
+				th:href="@{/css/demo.css}" />
+	</head>
+	<body>
+		<!-- the theDate is same as addAttribute param in controller class -->
+		<p th:text="'Time on the server is ' + ${theDate}"  class="funny" />
+	</body>
+</html>
