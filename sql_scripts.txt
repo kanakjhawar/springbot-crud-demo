@@ -1,0 +1,58 @@
+CREATE DATABASE `employee_directory`;
+
+USE `employee_directory`;
+
+CREATE TABLE `employee` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+INSERT INTO `employee_directory`.`employee` VALUES
+(1,'Leslie','Andrews','leslie@gmail.com'),
+(2,'Emma','Washington','emma@gmail.com'),
+(3,'Avani','Gupta','avani@gmail.com'),
+(4,'Yuri','Petrova','yuri@gmail.com'),
+(5,'Juan','Vega','juan@gmail.com'),
+(6,'Trupti','Bose','trupti@gmail.com');
+
+CREATE DATABASE `spring_security_demo_bcrypt`;
+
+USE `spring_security_demo_bcrypt`;
+
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `password` char(68) NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `spring_security_demo_bcrypt`.`users` VALUES
+('leslie','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1),
+('emma','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1),
+('avani','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1),
+('yuri','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1),
+('juan','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1),
+('trupti','$2a$12$KhN4F1ctBBOyGyFSGMhcIeKJW2uZZNU5J2b67bwcNmVXLBBGrW2Ey',1);
+
+CREATE TABLE `authorities` (
+  `username` varchar(50) NOT NULL,
+  `authority` varchar(50) NOT NULL,
+  UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
+  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `authorities` 
+VALUES 
+('leslie','ROLE_EMPLOYEE'),
+('avani','ROLE_EMPLOYEE'),
+('trupti','ROLE_EMPLOYEE'),
+('emma','ROLE_EMPLOYEE'),
+('juan','ROLE_EMPLOYEE'),
+('juan','ROLE_MANAGER'),
+('yuri','ROLE_EMPLOYEE'),
+('yuri','ROLE_ADMIN');
+
+
